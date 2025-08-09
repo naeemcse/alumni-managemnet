@@ -1,51 +1,261 @@
 
-*{
-	margin: 0;
-	padding: 0;
-    font-family: bromega-Regular;
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-sizing: border-box;
-    background: linear-gradient(100deg, #2c3142 46.35%, #135748 119.01%);
-    color: antiquewhite;
 }
 
-.container{
-    width: 100%;
-    /* min-height: 100%; */
-    padding: 5%;
-    background-position: center;
-    background-size: cover;
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    padding-top: 0; /* Remove extra padding from header */
+}
+
+/* Ensure proper spacing with header */
+.registration-container {
+    min-height: calc(100vh - 80px); /* Account for header height */
+    padding: 2rem 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 5px;
+    margin-top: 20px; /* Add some space below the header */
 }
-.container h2{
-    font-size: 3rem ;
-    color: antiquewhite;
+
+.registration-wrapper {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    margin: 1rem;
 }
-.container p{
-    font-size: bold;
-    align-items: center;
-}
-.form-group .row{ 
-    border-radius: 40rem;
-    padding: 20px;
-    font-size: 1.5rem;
+
+.registration-header {
     text-align: center;
+    margin-bottom: 2rem;
+}
+
+.registration-header h1 {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.registration-header p {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+}
+
+.type-selector {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
     justify-content: center;
+}
+
+.type-btn {
+    flex: 1;
+    padding: 1rem 2rem;
+    border: 2px solid #e0e6ed;
+    background: #f8f9fa;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    max-width: 200px;
+}
+
+.type-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #667eea;
+    transform: translateY(-2px);
+}
+
+.type-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.type-btn h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.type-btn p {
+    margin: 0.5rem 0 0 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.form-container {
+    display: none;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.form-container.active {
+    display: block;
+    opacity: 1;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e0e6ed;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.file-upload {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.file-upload input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.file-upload-label {
+    display: block;
+    padding: 0.75rem 1rem;
+    border: 2px dashed #667eea;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #f8f9ff;
+}
+
+.file-upload-label:hover {
+    background: #667eea;
+    color: white;
+}
+
+.checkbox-group {
+    display: flex;
     align-items: center;
-    margin: auto;
+    gap: 0.5rem;
+    margin: 1rem 0;
 }
-.form-group .row input{
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin: 0;
 }
-.form-group h4{
-    color: yellowgreen;
-    margin: auto;
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
-.form-group .checkboxx{
-    font-size: 4rem;
-    color: azure;
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.alert {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border: none;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    border-left: 4px solid #28a745;
+}
+
+.alert-danger {
+    background: #f8d7da;
+    color: #721c24;
+    border-left: 4px solid #dc3545;
+}
+
+@media (max-width: 768px) {
+    .registration-wrapper {
+        margin: 0.5rem;
+        padding: 1.5rem;
+    }
+    
+    .registration-header h1 {
+        font-size: 2rem;
+    }
+    
+    .type-selector {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .type-btn {
+        max-width: none;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
 }

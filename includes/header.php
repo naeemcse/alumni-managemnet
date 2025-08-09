@@ -26,12 +26,12 @@
         <nav class="navbar">
             <a href="index.php#home">Home</a>
             <a href="index.php#faculty">Faculty Member</a>
-            <a href="index.php#alumni">Alumni</a>
-            <a href="index.php#running-student">Running Student</a>
+            <a href="alumni.php">Alumni Directory</a>
+            <a href="students.php">Running Students</a>
             <a href="index.php#event">Events</a>
             <a href="index.php#fund">Fund</a>
             <a href="index.php#jobs">Jobs</a>
-            <a href="search.php">Search Alumni</a>
+            <a href="search.php">Quick Search</a>
             <a href="signup.php">Sign Up</a>
         </nav>
         <div id="menu-btn" class="fas fa-bars">
