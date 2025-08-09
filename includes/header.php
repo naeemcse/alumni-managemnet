@@ -28,11 +28,13 @@
             <a href="index.php#faculty">Faculty Member</a>
             <a href="alumni.php">Alumni Directory</a>
             <a href="students.php">Running Students</a>
-            <a href="index.php#event">Events</a>
-            <a href="index.php#fund">Fund</a>
-            <a href="index.php#jobs">Jobs</a>
+            <a href="events.php">Events</a>
+            <a href="jobs.php">Job Circulars</a>
             <a href="search.php">Quick Search</a>
             <a href="signup.php">Sign Up</a>
+            <a href="admin-login.php" class="admin-link">
+                <i class="fas fa-user-shield"></i> Admin
+            </a>
         </nav>
         <div id="menu-btn" class="fas fa-bars">
             <p></p>

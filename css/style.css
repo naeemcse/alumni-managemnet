@@ -147,6 +147,20 @@ body {
     transform: translateY(-2px);
 }
 
+.header .navbar a.admin-link {
+    background: linear-gradient(135deg, #FA4A6F 0%, #e03a5f 100%);
+    color: white !important;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+}
+
+.header .navbar a.admin-link:hover {
+    background: linear-gradient(135deg, #e03a5f 0%, #c2334a 100%);
+    color: white !important;
+    transform: translateY(-2px);
+}
+
 #menu-btn{
     font-size: 1.5rem;
     border-radius: 0.5rem;
