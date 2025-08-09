@@ -1,28 +1,29 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const menuBtn = document.getElementById('menu-btn');
-    const navbar = document.querySelector('.header .navbar');
+    // Desktop dropdown functionality (backup in case header.php script doesn't load)
+    const dropdownBtn = document.getElementById('menuDropdown');
+    const dropdownMenu = document.getElementById('dropdownMenu');
     
-    if (menuBtn && navbar) {
-        menuBtn.addEventListener('click', function() {
-            navbar.classList.toggle('active');
+    if (dropdownBtn && dropdownMenu) {
+        // Only add if no existing listeners
+        if (!dropdownBtn.hasAttribute('data-listener-added')) {
+            dropdownBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                dropdownMenu.classList.toggle('show');
+            });
+            dropdownBtn.setAttribute('data-listener-added', 'true');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function() {
+            dropdownMenu.classList.remove('show');
         });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!menuBtn.contains(e.target) && !navbar.contains(e.target)) {
-                navbar.classList.remove('active');
-            }
-        });
-        
-        // Close menu when window is resized to desktop
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                navbar.classList.remove('active');
-            }
+
+        dropdownMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
         });
     }
     
-    // Initialize carousel when jQuery is loaded
+    // Initialize carousel when DOM is ready
     slider_carouselInit();
 });
     

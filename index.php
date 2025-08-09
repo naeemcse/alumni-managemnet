@@ -42,7 +42,7 @@ $latest_jobs = mysqli_query($conn, "SELECT * FROM jobs ORDER BY created_at DESC 
                 </div>
                 <div class="col-lg-6">
                     <div class="hero-image">
-                        <img src="img/slider-01.png" alt="CSE Alumni" class="img-fluid">
+                        <img src="img/cse_logo.jpeg" alt="CSE Alumni" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -294,6 +294,69 @@ $latest_jobs = mysqli_query($conn, "SELECT * FROM jobs ORDER BY created_at DESC 
         </div>
     </div>
 </section>
+
+<!-- Photo Gallery Section -->
+<section class="gallery-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Photo Gallery</h2>
+            <p class="section-subtitle">Capturing moments from our vibrant CSE community</p>
+        </div>
+        
+        <?php
+        // Get photos from gallery directory
+        $gallery_dir = 'img/gallery/';
+        $gallery_photos = array();
+        
+        if (is_dir($gallery_dir)) {
+            $files = scandir($gallery_dir);
+            foreach ($files as $file) {
+                if ($file != '.' && $file != '..' && in_array(strtolower(pathinfo($file, PATHINFO_EXTENSION)), ['jpg', 'jpeg', 'png', 'gif'])) {
+                    $gallery_photos[] = $gallery_dir . $file;
+                }
+            }
+        }
+        
+        // Display first 8 photos in grid
+        $display_photos = array_slice($gallery_photos, 0, 8);
+        ?>
+        
+        <div class="gallery-grid">
+            <?php foreach ($display_photos as $index => $photo): ?>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="<?php echo $index * 100; ?>">
+                    <div class="gallery-image-wrapper">
+                        <img src="<?php echo htmlspecialchars($photo); ?>" alt="Gallery Image <?php echo $index + 1; ?>" class="gallery-image">
+                        <div class="gallery-overlay">
+                            <div class="gallery-overlay-content">
+                                <i class="fas fa-search-plus" onclick="openLightbox('<?php echo htmlspecialchars($photo); ?>')"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        
+        <?php if (count($gallery_photos) > 8): ?>
+            <div class="section-footer">
+                <a href="gallery.php" class="btn-view-all">
+                    <i class="fas fa-images"></i> View More Photos
+                </a>
+            </div>
+        <?php endif; ?>
+    </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
+    <div class="lightbox-content">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightboxImage" src="" alt="Gallery Image">
+        <div class="lightbox-nav">
+            <button class="lightbox-prev" onclick="previousImage()">&#10094;</button>
+            <button class="lightbox-next" onclick="nextImage()">&#10095;</button>
+        </div>
+    </div>
+</div>
 
         <!-- card area start -->
     <div class="card_wrapper" id="faculty">
@@ -605,6 +668,47 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add loading animation
     document.body.classList.add('loaded');
+});
+
+// Gallery Lightbox functionality
+let currentImageIndex = 0;
+let galleryImages = [];
+
+function openLightbox(imageSrc) {
+    // Get all gallery images
+    const galleryItems = document.querySelectorAll('.gallery-image');
+    galleryImages = Array.from(galleryItems).map(img => img.src);
+    currentImageIndex = galleryImages.indexOf(imageSrc);
+    
+    document.getElementById('lightboxImage').src = imageSrc;
+    document.getElementById('lightboxModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    document.getElementById('lightboxModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+function nextImage() {
+    currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+    document.getElementById('lightboxImage').src = galleryImages[currentImageIndex];
+}
+
+function previousImage() {
+    currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+    document.getElementById('lightboxImage').src = galleryImages[currentImageIndex];
+}
+
+// Close lightbox with escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeLightbox();
+    } else if (e.key === 'ArrowRight') {
+        nextImage();
+    } else if (e.key === 'ArrowLeft') {
+        previousImage();
+    }
 });
 
 // Loading animation CSS
