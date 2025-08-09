@@ -1,16 +1,14 @@
-
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Find Alumni</title>
-</head>
-<body>
-
+<?php
+$pageTitle = "Find Alumni - Search";
+$additionalCSS = '<style>
+.search-container {
+    min-height: 80vh;
+    padding: 2rem 0;
+}
+</style>';
+include 'includes/header.php'; 
+?>
+<div class="search-container">
     <div class="container">
         <div class="row"> 
             <div class="col-md-12">
@@ -102,7 +100,6 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+</div>
+
+<?php include 'includes/footer.php'; ?>

@@ -1,16 +1,13 @@
+<?php
+<?php 
+$pageTitle = "New Alumni Registration";
+$additionalCSS = '<link href="css/signup.css" rel="stylesheet" type="text/css">';
+include 'includes/header.php'; 
+?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="css/fontawesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="css/signup.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" type="text/css">
-    <title>New Alumni</title>
-</head>
 <body>
+
+
     <div class="container">
          <form action="_connection.php" method="POST" class="form-signup mt-5" enctype="multipart/form-data">
             <!-- <?php
@@ -82,3 +79,5 @@
     </div>
 </body>
 </html>
+
+<?php include 'includes/footer.php'; ?>
