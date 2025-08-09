@@ -4,7 +4,6 @@ $pageTitle = "Alumni of CSE - Home";
 $additionalCSS = '<link href="css/homepage-enhanced.css" rel="stylesheet" type="text/css">';
 include 'includes/header.php'; 
 include '_dbconnect.php';
-
 // Get statistics
 $alumni_count = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM Alumni"));
 $students_count = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM RunningStudents"));
@@ -454,7 +453,7 @@ $latest_jobs = mysqli_query($conn, "SELECT * FROM jobs ORDER BY created_at DESC 
         <div class="container mt-4">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h2 class="head_text">Our Faculty Alumni</h2>
+                    <h2 class="head_text">Our Alumni</h2>
                     <p class="head_para"></p>
                 </div>
                 <div class="col-12">
