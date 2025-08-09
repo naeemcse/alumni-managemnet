@@ -2,8 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="keywords" content="app, landing, corporate, Creative, Html Template, Template">
+    <meta name="descript    <!-- Logo Styles -->
+    .logo {
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #2c3e50;
+        text-decoration: none;
+    }
+
+    .logo img {
+        height: 35px;
+        margin-right: 8px;
+    }
+
+    .logo:hover {
+        color: #3498db;
+    }
+    
+    /* Make Alumni text more visible */
+    .logo {
+        text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        color: #2c3e50 !important;
+    }    <meta name="keywords" content="app, landing, corporate, Creative, Html Template, Template">
     <meta name="author" content="web-themes">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,6 +54,8 @@
             <a href="events.php">Events</a>
             <a href="jobs.php">Jobs</a>
             <a href="gallery.php">Gallery</a>
+            <a href="search.php">Search</a>
+            <a href="signup.php">Sign Up</a>
         </nav>
         
         <!-- Right side items -->
@@ -44,9 +68,10 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="dropdown-menu" id="dropdownMenu">
-                    <a href="index.php#faculty"><i class="fas fa-chalkboard-teacher"></i> Faculty</a>
                     <a href="search.php"><i class="fas fa-search"></i> Search</a>
                     <a href="signup.php"><i class="fas fa-user-plus"></i> Sign Up</a>
+                    <a href="gallery.php"><i class="fas fa-images"></i> Gallery</a>
+                    <a href="index.php#faculty"><i class="fas fa-chalkboard-teacher"></i> Faculty</a>
                 </div>
             </div>
         </div>
@@ -99,8 +124,10 @@
         align-items: center;
         font-size: 1.5rem;
         font-weight: 700;
-        color: #2c3e50;
+        color: #2c3e50 !important;
         text-decoration: none;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
     }
 
     .logo img {
@@ -109,7 +136,9 @@
     }
 
     .logo:hover {
-        color: #3498db;
+        color: #3498db !important;
+        text-decoration: none;
+        transform: translateY(-1px);
     }
 
     /* Main Navigation for Desktop/Laptop */
@@ -139,6 +168,11 @@
         display: flex;
         align-items: center;
         gap: 1rem;
+    }
+    
+    /* Show dropdown only on smaller laptops */
+    .header-right .dropdown {
+        display: none;
     }
 
     /* Admin Button */
@@ -356,28 +390,36 @@
             padding: 0.6rem 1.2rem;
             font-size: 1rem;
         }
+        
+        .header-right .dropdown {
+            display: none !important;
+        }
     }
 
     /* Medium laptops - compact navigation */
     @media (min-width: 992px) and (max-width: 1199px) {
         .navbar-main {
-            gap: 1rem;
+            gap: 0.8rem;
         }
         
         .navbar-main a {
-            padding: 0.5rem 0.8rem;
+            padding: 0.5rem 0.7rem;
             font-size: 0.9rem;
         }
         
         .header-right {
             gap: 0.5rem;
         }
+        
+        .header-right .dropdown {
+            display: none !important;
+        }
     }
 
-    /* Small laptops - very compact navigation */
+    /* Small laptops - very compact navigation, hide some items in dropdown */
     @media (min-width: 768px) and (max-width: 991px) {
         .navbar-main {
-            gap: 0.8rem;
+            gap: 0.5rem;
         }
         
         .navbar-main a {
@@ -385,8 +427,17 @@
             font-size: 0.85rem;
         }
         
+        /* Hide some items on smaller laptops, show them in dropdown */
+        .navbar-main a:nth-child(n+6) {
+            display: none;
+        }
+        
         .header-right {
             gap: 0.5rem;
+        }
+        
+        .header-right .dropdown {
+            display: block !important;
         }
     }
 
